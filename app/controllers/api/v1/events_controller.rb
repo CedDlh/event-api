@@ -15,4 +15,9 @@ class Api::V1::EventsController < Api::V1::BaseController
     @event = Event.find(params[:id])
   end
 
+  def update
+    @event.update(params[:id])
+    render :show
+  end
+
 end
