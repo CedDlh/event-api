@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   #devise_for :users
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :events, only: [ :index, :show ]
-      resources :tickets, only: [:show]
+      resources :events, only: [ :index, :show, :update ]
+      resources :tickets, only: [:create]
     end
   end
   root to: 'pages#home'
