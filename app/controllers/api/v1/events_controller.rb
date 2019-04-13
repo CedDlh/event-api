@@ -1,7 +1,7 @@
 class Api::V1::EventsController < Api::V1::BaseController
 # :events
 
-  # def initialize(user, events)
+  #def initialize(user, events)
   #   @user = user
   #   @events = events
   # end
@@ -16,7 +16,8 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def update
-    @event.update(params[:id])
+    @ticket = Ticket.find(params[:id])
+    @ticket.update(params.permit(:status))
     render :show
   end
 
