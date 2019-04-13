@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.5'
 #Gem to create Test Driven Development
 #gem 'rspec', '~> 3.0'
 gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+#gem useful to test model associations on
+gem 'shoulda'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
