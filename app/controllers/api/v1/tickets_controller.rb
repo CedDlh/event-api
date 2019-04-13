@@ -2,7 +2,7 @@ class Api::V1::TicketsController < Api::V1::BaseController
 
   def create
   @event = Event.find(params[:event_id])
-  @ticket = Ticket.find(params[:id])
+  @ticket = Ticket.new(params.require(:ticket).permit(:event_id, :amount))
     if @event.tickets_available == 0 || @event.tickets_available == nil
      raise "No tickets available"
     elsif @event.price != params[:amount]
@@ -10,8 +10,15 @@ class Api::V1::TicketsController < Api::V1::BaseController
     else
      @ticket.save
      @event.tickets_available -= 1
+     @event.save
     end
   end
+
+ def show
+    @ticket = Ticket.find(params[:id])
+  end
+
+
 
 
 
