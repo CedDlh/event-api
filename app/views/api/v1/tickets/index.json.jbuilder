@@ -1,3 +1,3 @@
-json.array! @tickets do |event|
-  json.extract! event, :id, :status, :event_id, :status
+json.array! @tickets do |ticket|
+  json.extract! tickety, :id, :status, :event_id, :status
 end
