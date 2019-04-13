@@ -1,56 +1,35 @@
 class Api::V1::TicketsController < Api::V1::BaseController
 
-  def create
-  @event = Event.find(params[:event_id])
-  @ticket = Ticket.new(params.require(:ticket).permit(:event_id, :amount))
-    if @event.tickets_available == 0 || @event.tickets_available == nil
-     raise "No tickets available"
-    elsif @event.price != params[:amount]
-     raise "Amount doesn't match"
-    else
-     @ticket.save
-     @event.tickets_available -= 1
-     @event.save
-    end
+  def index
+    @tickets = Ticket.all
   end
 
- def show
+
+  def show
     @ticket = Ticket.find(params[:id])
   end
 
 
+  def create
+    @event = Event.find(params[:event_id])
+    @ticket = Ticket.new(ticket_params)
+    ticket_avail = @event.tickets_available
+    if ticket_avail == 0 || ticket_avail == nil # check on events table if column tickets available > 0 or not nil
+      raise "No tickets available"
+    elsif @event.price != params[:amount] #check if price of ticket is the same than event
+      raise "Amount doesn't match"
+    else
+      @ticket.save
+      @event.tickets_available -= 1 #Decrease value of tickets_avail on event table
+      @event.save
+    end
+  end
 
 
+private
 
-  #(implement validation optional)
-  # check on events table if column tickets available > 0
-  #check if amount of request is the same of event
-  #if everything went well Ticket.save
-  #Decrease value tickets_avail on tickets table
-
-
-
-
-
-  # def update
-  #   if @ticket.update(ticket_params)
-  #     render :show
-  #   else
-  #     render_error
-  #   end
-  # end
-
-
-  # private
-
-
-  # def event_params
-  #     params.require(:ticket).permit(:status)
-  #   end
-
-  # def render_error
-  #     render json: { errors: @event.errors.full_messages },
-  #       status: :unprocessable_entity
-  #   end
+  def ticket_params
+    params.require(:ticket).permit(:event_id, :amount, :status)
+  end
 
 end
