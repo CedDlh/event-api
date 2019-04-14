@@ -8,6 +8,7 @@ class Api::V1::EventsController < Api::V1::BaseController
 
 
   def show
+     @event = Event.find(params[:id])
      render json: @event.as_json, status: 200
   end
 
