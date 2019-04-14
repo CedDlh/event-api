@@ -28,6 +28,20 @@ class Api::V1::TicketsController < Api::V1::BaseController
   end
 
 
+  def update
+    @event = Event.find(params[:id])
+    @ticket = Ticket.find(params[:id])
+    @ticket.update(params.require(:ticket).permit(:amount, :status))
+      if @ticket.status != "paid"
+    raise "Transaction can't go through. Verify details"
+    else
+      render json: @ticket.as_json
+
+    end
+    @ticket.save
+  end
+
+
 private
 
   def ticket_params
