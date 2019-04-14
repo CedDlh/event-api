@@ -14,7 +14,8 @@ Informations
 * Its runs on the latest API version of ruby on rails (https://guides.rubyonrails.org/api_app.html) and to access to the API code you have to follow the following :
 Model : event-api/app/models  
 Controllers : event-api/app/controllers/api/v1  
-DB Schema :  db/schema.rb
+DB Schema :  event-api/db/schema.rb
+Routes : events-api/config/routes
 
 To find the routes : run rails routes in the terminal.
 
