@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :events, only: [ :index, :show]
-      resources :tickets, only: [:index, :show, :create]
+      resources :tickets, only: [:index, :show, :create, :update]
     end
   end
   #root to: 'api/v1/events#index'
