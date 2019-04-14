@@ -4,9 +4,10 @@ This API has been created in order to allow a ticket selling web app to display 
 
 The API can also create a new ticket instance when a user choose to buy a ticket from an event and it will automatically decrement the number of tickets available in the event.
 
-The program will only perform a create if the value of the ticket is the same as the event price and will also double check than the number of tickets available for the event is > 0. If those 2 criterias are not met, the 
+The program will only perform a create if the value of the ticket is the same as the event price and will also double check than the number of tickets available for the event is > 0. If those 2 criterias are not met, the application will through an error message to let the developer know than something wrong happened.
 
 Through the Update method, you can also ensure the ticket status get updated from nil to paid thus allowing to filter and track the number of tickets that have been sold per event or as a total on the platfrom.
+Once a ticket has been updated, the developer will be redirected to the show if the payment has gone through if a problem occur and the status can not get updated to paid, the application will raise an error message.
 
 Informations 
 
@@ -18,7 +19,7 @@ DB Schema :  db/schema.rb
 To find the routes : run rails routes in the terminal.
 
 * Configuration
-Before starting to use the app, run a bundle install as some dependencies have been added on top the standard RoR gems.
+Before starting to use the app, run a bundle install as some dependencies have been added on top of the standard RoR gems.
 
 * Database creation and initialization
 In order to simplify the use of the program, A database seed has been integrated in the program. feel free to run a rails db:migrate and rails db:seed in order to very easily generate a template DB of events. 
