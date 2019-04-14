@@ -10,14 +10,18 @@ RSpec.describe Api::V1::EventsController , :type => :controller do
 end
 
 
-RSpec.describe Api::V1::EventsController , :type => :controller do
-  describe "GET show" do
-    it "has a 200 status code" do
-      get :show, params: { id: 1}
-      expect(response.status).to eq(200)
-    end
+
+RSpec.describe "GET show", :type => :request do
+  let!(:events) {FactoryBot.create_list(:random_event, 5)}
+before {get '/api/v1/events/2'}
+
+it 'returns status code 200' do
+    expect(response).to have_http_status(:success)
   end
 end
+
+
+
 
     # it "response with JSON body containing expected Event attributes" do
     #   hash_body = {}
