@@ -2,11 +2,13 @@ class Api::V1::TicketsController < Api::V1::BaseController
 
   def index
     @tickets = Ticket.all
+    render json: @tickets.as_json, status: 200
   end
 
 
   def show
     @ticket = Ticket.find(params[:id])
+    render json: @ticket.as_json, status: 200
   end
 
 

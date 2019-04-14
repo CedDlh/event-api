@@ -17,10 +17,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 #Gem to create Test Driven Development
 #gem 'rspec', '~> 3.0'
-gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 #gem useful to test model associations on
-gem 'shoulda'
-gem 'rails-controller-testing'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -32,9 +30,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+  gem 'shoulda'
+  gem 'rails-controller-testing'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
